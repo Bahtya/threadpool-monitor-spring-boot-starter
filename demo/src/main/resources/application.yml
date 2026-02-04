@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: threadpool-monitor-demo
+
+# Actuator 配置
+management:
+  endpoints:
+    web:
+      exposure:
+        # 暴露健康检查、信息和线程池监控端点
+        include: health,info,threadpool
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+    threadpool:
+      enabled: true
+
+# 线程池监控配置（可选，默认启用）
+threadpool:
+  monitor:
+    enabled: true
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.example.demo: DEBUG
+    com.github.bahtya.monitor: DEBUG
